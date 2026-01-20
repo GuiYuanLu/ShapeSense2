@@ -1,9 +1,4 @@
-/*
- * @Description: 型识 (SHAPE SENSE) 项目说明文档
- * Ray版权所有
- * Copyright (c) 2025 by Ray, All Rights Reserved.
- * 编辑时间: 2025-01-20 12:00:00
- */
+
 
 # 型识 SHAPE SENSE
 
