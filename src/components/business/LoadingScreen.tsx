@@ -1,28 +1,23 @@
 /*
- * @Description: 加载页组件 - 微信登录后的过渡加载动画页面
+ * @Description: 
  * Ray版权所有
- * Copyright (c) 2025 by Ray, All Rights Reserved.
- * 编辑时间: 2025-01-20 12:00:00
+ * Copyright (c) 2026 by ${git_name_email}, All Rights Reserved. 
+ */
+/*
+ * @Description: 加载页组件 - 微信登录后的过渡加载动画页面
+ * 显示同心圆脉冲动画和渐变进度条，进度达到100%后自动触发完成回调
+ * Ray版权所有
+ * Copyright (c) 2026 by Ray, All Rights Reserved.
  */
 
 "use client"
 
 import { useEffect, useState } from "react"
-import styles from "@/app/styles.module.css"
+import styles from "@/styles/styles.module.css"
 
-/*
- * LoadingScreenProps - 加载页组件属性接口
- * @property onComplete - 加载完成后的回调函数
- */
 interface LoadingScreenProps {
   onComplete?: () => void
 }
-
-/*
- * LoadingScreen - 加载页组件
- * 显示同心圆脉冲动画和渐变进度条
- * 进度达到100%后自动触发完成回调
- */
 export function LoadingScreen({ onComplete }: LoadingScreenProps) {
   /* progress - 加载进度状态 (0-100) */
   const [progress, setProgress] = useState(0)

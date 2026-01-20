@@ -1,0 +1,48 @@
+.container {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: var(--card);
+  border-top: 1px solid var(--border);
+  display: flex;
+  justify-content: space-around;
+  padding: 0.5rem 0;
+  padding-bottom: env(safe-area-inset-bottom, 0.5rem);
+  z-index: 100;
+}
+
+.tab {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.5rem 1rem;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.2s;
+  border-radius: 0.5rem;
+}
+
+.tabActive {
+  color: var(--primary);
+}
+
+.tabInactive {
+  color: var(--muted-foreground);
+}
+
+.tabInactive:hover {
+  color: var(--foreground);
+}
+
+.icon {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.label {
+  font-size: 0.75rem;
+  font-weight: 500;
+}

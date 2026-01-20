@@ -1,19 +1,24 @@
 /*
  * @Description: 主入口页面 - 整合启动页、登录页、加载页、引导页的路由控制
  * Ray版权所有
- * Copyright (c) 2025 by Ray, All Rights Reserved.
- * 编辑时间: 2025-01-20 12:00:00
+ * Copyright (c) 2026 by Ray, All Rights Reserved.
  */
 
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { Shield, Camera, Sparkles, Moon, Sun } from "lucide-react"
-import { LoadingScreen } from "@/components/LoadingScreen"
-import { OnboardingScreen } from "@/components/OnboardingScreen"
-import { SplashScreen } from "@/components/SplashScreen"
+import { useTheme } from "next-themes"
+import { LoadingScreen } from "@/components/business/LoadingScreen"
+import { OnboardingScreen } from "@/components/business/OnboardingScreen"
+import { SplashScreen } from "@/components/business/SplashScreen"
+import { HomeScreen } from "@/screens/Home"
+import { EffectsScreen } from "@/screens/Effects"
+import { SalonScreen } from "@/screens/Salon"
+import { ProfileScreen } from "@/screens/Profile"
+import { BottomNav } from "@/components/common/BottomNav"
 import { useAppStore, useUserStore } from "@/lib/stores"
-import styles from "./styles.module.css"
+import styles from "@/styles/styles.module.css"
 
 /*
  * LoginPage - 登录页面主组件
@@ -21,25 +26,20 @@ import styles from "./styles.module.css"
  * 页面流程: 启动页 -> 登录页 -> 加载页 -> 引导页 -> 主页
  */
 export default function LoginPage() {
-  /* 从状态管理获取当前屏幕和屏幕切换方法 */
   const { currentScreen, setScreen } = useAppStore()
-  /* 从用户状态管理获取登录方法 */
   const { login } = useUserStore()
-  /* 主题状态：dark 或 light */
-  const [isDarkMode, setIsDarkMode] = useState(true)
+  const { theme, setTheme } = useTheme()
+  const [mounted, setMounted] = useState(false)
+  const [activeTab, setActiveTab] = useState("home")
 
-  /*
-   * handleWeChatLogin - 处理微信登录点击
-   * 切换到加载页面
-   */
+  useEffect(() => {
+    setMounted(true)
+  }, [])
+
   const handleWeChatLogin = () => {
     setScreen("loading")
   }
 
-  /*
-   * handleLoginComplete - 处理登录完成
-   * 创建模拟用户数据并切换到引导页
-   */
   const handleLoginComplete = () => {
     login(
       {
@@ -53,17 +53,15 @@ export default function LoginPage() {
     setScreen("onboarding")
   }
 
-  /*
-   * toggleTheme - 切换明暗主题
-   */
   const toggleTheme = () => {
-    setIsDarkMode(!isDarkMode)
+    setTheme(theme === "dark" ? "light" : "dark")
   }
 
-  /* 主题切换按钮组件 */
   const ThemeToggle = () => (
     <button className={styles.themeToggle} onClick={toggleTheme} aria-label="切换主题">
-      {isDarkMode ? (
+      {!mounted ? (
+        <Sun className={styles.iconMd} />
+      ) : theme === "dark" ? (
         <Sun className={styles.iconMd} />
       ) : (
         <Moon className={styles.iconMd} />
@@ -94,18 +92,12 @@ export default function LoginPage() {
       <div className={styles.homeContainer}>
         <ThemeToggle />
         <div className={styles.homeContent}>
-          <h1 className={styles.homeTitle}>欢迎来到型识</h1>
-          <p className={styles.homeSubtitle}>主页面开发中...</p>
-          <button
-            onClick={() => {
-              useUserStore.getState().logout()
-              setScreen("login")
-            }}
-            className={styles.homeLogoutBtn}
-          >
-            退出登录
-          </button>
+          {activeTab === "home" && <HomeScreen />}
+          {activeTab === "effects" && <EffectsScreen />}
+          {activeTab === "salon" && <SalonScreen />}
+          {activeTab === "profile" && <ProfileScreen />}
         </div>
+        <BottomNav activeTab={activeTab} onTabChange={setActiveTab} />
       </div>
     )
   }
@@ -139,7 +131,7 @@ export default function LoginPage() {
         </div>
 
         {/* Title */}
-        <h1 className={styles.loginTitle}>#型识#</h1>
+        <h1 className={styles.loginTitle}>型识</h1>
         <p className={styles.loginSubtitle}>探索你的数字发型</p>
         <p className={styles.loginTagline}>让AI预见最美的你</p>
 

@@ -1,19 +1,18 @@
 /*
  * @Description: 引导页组件 - 新用户功能介绍轮播页面
+ * 展示应用的核心功能和使用流程，帮助新用户快速了解产品
+ * 功能：展示三个引导幻灯片，支持主题切换，可跳过引导
  * Ray版权所有
- * Copyright (c) 2025 by Ray, All Rights Reserved.
- * 编辑时间: 2025-01-20 12:00:00
+ * Copyright (c) 2026 by Ray, All Rights Reserved.
  */
 
 "use client"
 
-import { useState } from "react"
-import { ChevronLeft, Camera, Star, HelpCircle, Sparkles, X, Palette } from "lucide-react"
-import styles from "./onboarding.module.css"
+import { useState, useEffect } from "react"
+import { ChevronLeft, Camera, Star, HelpCircle, Sparkles, X, Palette, Moon, Sun } from "lucide-react"
+import { useTheme } from "next-themes"
+import styles from "@/styles/onboarding.module.css"
 
-/*
- * OnboardingScreenProps - 引导页组件属性接口
- */
 interface OnboardingScreenProps {
   onBack?: () => void
   onStart?: () => void
@@ -25,6 +24,28 @@ interface OnboardingScreenProps {
  */
 export function OnboardingScreen({ onBack, onStart, onSkip }: OnboardingScreenProps) {
   const [currentSlide, setCurrentSlide] = useState(0)
+  const { theme, setTheme } = useTheme()
+  const [mounted, setMounted] = useState(false)
+
+  useEffect(() => {
+    setMounted(true)
+  }, [])
+
+  const toggleTheme = () => {
+    setTheme(theme === "dark" ? "light" : "dark")
+  }
+
+  const ThemeToggle = () => (
+    <button className={styles.themeToggle} onClick={toggleTheme} aria-label="切换主题">
+      {!mounted ? (
+        <Sun className={styles.iconMd} />
+      ) : theme === "dark" ? (
+        <Sun className={styles.iconMd} />
+      ) : (
+        <Moon className={styles.iconMd} />
+      )}
+    </button>
+  )
 
   const slides = [
     {
@@ -113,6 +134,7 @@ export function OnboardingScreen({ onBack, onStart, onSkip }: OnboardingScreenPr
 
   return (
     <div className={styles.container}>
+      <ThemeToggle />
       <div className={styles.bgBlur}>
         <div className={styles.blurCircle} style={{ top: '2.5rem', right: '2.5rem', width: '8rem', height: '8rem', backgroundColor: 'rgba(147, 51, 234, 0.2)' }} />
         <div className={styles.blurCircle} style={{ bottom: '10rem', left: '2.5rem', width: '10rem', height: '10rem', backgroundColor: 'rgba(107, 33, 168, 0.2)' }} />
@@ -125,9 +147,9 @@ export function OnboardingScreen({ onBack, onStart, onSkip }: OnboardingScreenPr
 
         <div className={styles.header}>
           <div className={styles.logo}>
-            <Star className={`${styles.iconLg} ${styles.iconWhite}`} style={{ fill: '#fff' }} />
+            <Star className={`${styles.iconLg} ${styles.iconWhite}`} style={{ fill: 'var(--foreground)' }} />
           </div>
-          <h1 className={styles.title}>#型识</h1>
+          <h1 className={styles.title}>型识</h1>
         </div>
         <p className={styles.subtitle}>探索你的数字发型梦境</p>
 

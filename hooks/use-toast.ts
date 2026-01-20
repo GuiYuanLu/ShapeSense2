@@ -1,4 +1,10 @@
-'use client'
+/*
+ * @Description: Toast 消息提示 Hook
+ * 提供全局的消息提示功能
+ * Ray版权所有
+ * Copyright (c) 2026 by Ray, All Rights Reserved.
+ */
+"use client"
 
 // Inspired by react-hot-toast library
 import * as React from 'react'

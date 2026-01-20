@@ -1,4 +1,11 @@
-'use client'
+/*
+ * @Description: 启动页组件 - 应用启动时的过渡动画页面
+ * 显示应用 Logo 和品牌名称，2.5秒后自动进入登录页
+ * Ray版权所有
+ * Copyright (c) 2026 by Ray, All Rights Reserved.
+ */
+
+"use client"
 
 import * as React from 'react'
 import { ScanLine } from 'lucide-react'
@@ -28,10 +35,13 @@ export function SplashScreen({ className, onComplete, ...props }: SplashScreenPr
     <div
       data-slot="splash-container"
       className={cn(
-        'fixed inset-0 flex flex-col items-center justify-center bg-gradient-to-br from-purple-950 via-purple-900 to-indigo-950 transition-opacity duration-500',
+        'fixed inset-0 flex flex-col items-center justify-center transition-opacity duration-500',
         className
       )}
-      style={{ opacity }}
+      style={{ 
+        opacity,
+        background: 'linear-gradient(to bottom right, var(--background), var(--background))'
+      }}
       onClick={onComplete}
       {...props}
     >
@@ -42,8 +52,8 @@ export function SplashScreen({ className, onComplete, ...props }: SplashScreenPr
         </div>
       </div>
 
-      <h1 className="mt-8 text-4xl font-bold tracking-wider text-white">SHAPE SENSE</h1>
-      <p className="mt-2 text-sm text-purple-300">AI Neural Styling Lab</p>
+      <h1 className="mt-8 text-4xl font-bold tracking-wider" style={{ color: 'var(--foreground)' }}>SHAPE SENSE</h1>
+      <p className="mt-2 text-sm" style={{ color: 'var(--muted-foreground)' }}>AI Neural Styling Lab</p>
     </div>
   )
 }
