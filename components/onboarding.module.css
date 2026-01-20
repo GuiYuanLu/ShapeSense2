@@ -1,0 +1,310 @@
+/*
+ * @Description: 引导页样式模块
+ * 编辑时间: 2025-01-20
+ */
+
+.container {
+  min-height: 100vh;
+  background: linear-gradient(to bottom, #1a1025, #1a1025, #0d0a12);
+  color: #fff;
+  position: relative;
+  overflow: hidden;
+}
+
+.bgBlur {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.blurCircle {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(48px);
+}
+
+.content {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  padding: 2rem 1.5rem;
+}
+
+.backBtn {
+  align-self: flex-start;
+  margin-bottom: 1.5rem;
+  padding: 0.25rem;
+  border-radius: 9999px;
+  transition: background-color 0.2s;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: #fff;
+}
+
+.backBtn:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  margin-bottom: 0.5rem;
+}
+
+.logo {
+  width: 3rem;
+  height: 3rem;
+  background: linear-gradient(to bottom right, #a855f7, #7e22ce);
+  border-radius: 0.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+.title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #fff;
+}
+
+.subtitle {
+  text-align: center;
+  color: #9ca3af;
+  margin-bottom: 1.5rem;
+}
+
+.card {
+  background-color: rgba(42, 31, 61, 0.7);
+  backdrop-filter: blur(4px);
+  border-radius: 1rem;
+  padding: 1.25rem;
+  margin-bottom: 1.5rem;
+  border: 1px solid rgba(88, 28, 135, 0.3);
+}
+
+.cardHeader {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.cardTitle {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #fff;
+}
+
+.dots {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.dot {
+  height: 0.5rem;
+  border-radius: 9999px;
+  transition: all 0.3s;
+  border: none;
+  cursor: pointer;
+}
+
+.dotActive {
+  width: 1.5rem;
+  background-color: #a855f7;
+}
+
+.dotInactive {
+  width: 0.5rem;
+  background-color: #4b5563;
+}
+
+.bottomSection {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.bottomTitle {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #fff;
+  margin-bottom: 0.5rem;
+}
+
+.bottomDesc {
+  color: #9ca3af;
+  font-size: 0.875rem;
+}
+
+.spacer {
+  flex: 1;
+}
+
+.ctaBtn {
+  width: 100%;
+  background: linear-gradient(to right, #9333ea, #7e22ce);
+  box-shadow: 0 10px 15px -3px rgba(88, 28, 135, 0.3);
+  color: #fff;
+  font-weight: 600;
+  padding: 1rem;
+  border-radius: 9999px;
+  margin-bottom: 1rem;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border: none;
+  cursor: pointer;
+}
+
+.ctaBtn:hover {
+  background: linear-gradient(to right, #a855f7, #9333ea);
+}
+
+.skipBtn {
+  color: #6b7280;
+  font-size: 0.875rem;
+  transition: color 0.2s;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.skipBtn:hover {
+  color: #9ca3af;
+}
+
+/* 问题列表 */
+.problemBox {
+  background-color: rgba(26, 16, 37, 0.6);
+  border-radius: 0.75rem;
+  padding: 1rem;
+  margin-bottom: 1rem;
+}
+
+.problemTitle {
+  color: #c4b5fd;
+  font-size: 0.875rem;
+  margin-bottom: 0.75rem;
+}
+
+.problemList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.problemItem {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #d1d5db;
+  font-size: 0.875rem;
+}
+
+/* 图片卡片 */
+.imageCard {
+  position: relative;
+  overflow: hidden;
+  border-radius: 0.75rem;
+  cursor: pointer;
+}
+
+.imageCardImg {
+  width: 100%;
+  object-fit: cover;
+  transition: transform 0.3s;
+}
+
+.imageCard:hover .imageCardImg {
+  transform: scale(1.1);
+}
+
+.imageCardLabel {
+  position: absolute;
+  bottom: 0.5rem;
+  left: 0.5rem;
+}
+
+.imageCardTag {
+  color: #fff;
+  font-size: 0.75rem;
+  padding: 0.25rem 0.5rem;
+  border-radius: 9999px;
+}
+
+.tagPurple {
+  background-color: rgba(147, 51, 234, 0.8);
+}
+
+.tagCyan {
+  background-color: rgba(6, 182, 212, 0.8);
+}
+
+.tagGradient {
+  background: linear-gradient(to right, #ec4899, #a855f7);
+}
+
+.imageCardBadge {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: #22d3ee;
+  font-size: 0.75rem;
+  padding: 0.25rem 0.5rem;
+  border-radius: 9999px;
+}
+
+/* 网格布局 */
+.grid2 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.75rem;
+}
+
+.slideContent {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/* 图标 */
+.iconSm {
+  width: 1rem;
+  height: 1rem;
+}
+
+.iconMd {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+.iconLg {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.iconPurple {
+  color: #c084fc;
+}
+
+.iconWhite {
+  color: #fff;
+}
+
+.iconRed {
+  color: #f87171;
+}

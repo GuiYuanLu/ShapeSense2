@@ -1,0 +1,534 @@
+/*
+ * @Description: 型识应用样式模块
+ * 编辑时间: 2025-01-20
+ */
+
+/* ===== 主题变量 ===== */
+:root {
+  --bg-primary: #1a1025;
+  --bg-secondary: #1e1832;
+  --bg-card: rgba(30, 24, 50, 0.9);
+  --text-primary: #ffffff;
+  --text-secondary: #9ca3af;
+  --text-muted: #6b7280;
+  --accent-purple: #a78bfa;
+  --accent-cyan: #5eead4;
+  --accent-green: #4ade80;
+  --border-color: #2d2545;
+}
+
+/* ===== 通用容器 ===== */
+.pageContainer {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.centerContainer {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ===== 启动页 ===== */
+.splashContainer {
+  min-height: 100vh;
+  background-color: #000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.5s;
+}
+
+.splashIconWrapper {
+  position: relative;
+  margin-bottom: 2rem;
+}
+
+.splashIconGlow {
+  position: absolute;
+  inset: 0;
+  background-color: rgba(255, 255, 255, 0.1);
+  filter: blur(24px);
+  border-radius: 9999px;
+  transform: scale(1.5);
+}
+
+.splashIcon {
+  position: relative;
+  width: 4rem;
+  height: 4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.splashTitle {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 1.5rem;
+  font-weight: 300;
+  letter-spacing: 0.3em;
+  margin-bottom: 1rem;
+}
+
+.splashSubtitle {
+  color: rgba(255, 255, 255, 0.4);
+  font-size: 0.75rem;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+}
+
+/* ===== 加载页 ===== */
+.loadingContainer {
+  min-height: 100vh;
+  background: linear-gradient(to bottom, #1a1025, #0f0a18, #0a0510);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0 1.5rem;
+}
+
+.loadingCirclesWrapper {
+  position: relative;
+  margin-bottom: 3rem;
+}
+
+.loadingCirclesGlow {
+  position: absolute;
+  inset: 0;
+  width: 8rem;
+  height: 8rem;
+  border-radius: 9999px;
+  background-color: rgba(124, 58, 237, 0.1);
+  filter: blur(24px);
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+.loadingCircles {
+  position: relative;
+  width: 8rem;
+  height: 8rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.loadingRing {
+  position: absolute;
+  border-radius: 9999px;
+  border-width: 2px;
+  border-style: solid;
+}
+
+.loadingRing1 {
+  width: 8rem;
+  height: 8rem;
+  border-color: #3b2066;
+  animation: ping 2s ease-in-out infinite;
+}
+
+.loadingRing2 {
+  width: 7rem;
+  height: 7rem;
+  border-color: #4c2a7a;
+  animation: ping 2s ease-in-out 0.3s infinite;
+}
+
+.loadingRing3 {
+  width: 6rem;
+  height: 6rem;
+  border-color: #5d3490;
+  animation: ping 2s ease-in-out 0.6s infinite;
+}
+
+.loadingRing4 {
+  width: 5rem;
+  height: 5rem;
+  border-color: #6d3ea6;
+}
+
+.loadingRing5 {
+  width: 4rem;
+  height: 4rem;
+  border-color: #7c48b8;
+}
+
+.loadingCenter {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 9999px;
+  background: linear-gradient(to bottom right, #7c3aed, #5b21b6);
+  box-shadow: 0 10px 15px -3px rgba(124, 58, 237, 0.3);
+}
+
+.loadingTitle {
+  color: #fff;
+  font-size: 1.25rem;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+}
+
+.loadingSubtitle {
+  color: #6b7280;
+  font-size: 0.875rem;
+  margin-bottom: 2.5rem;
+}
+
+.loadingProgressTrack {
+  width: 16rem;
+  height: 0.375rem;
+  background-color: #2a2242;
+  border-radius: 9999px;
+  overflow: hidden;
+}
+
+.loadingProgressBar {
+  height: 100%;
+  background: linear-gradient(to right, #5eead4, #7dd3fc, #a78bfa);
+  border-radius: 9999px;
+  transition: all 0.1s ease-out;
+}
+
+/* ===== 登录页 ===== */
+.loginContainer {
+  min-height: 100vh;
+  background-color: var(--bg-primary);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.loginBgImages {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+.loginBgImage {
+  position: absolute;
+  opacity: 0.3;
+  border-radius: 0.5rem;
+  overflow: hidden;
+}
+
+.loginBgImageBlur {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: blur(4px);
+}
+
+.loginContent {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 3rem 1.5rem 2rem;
+  flex: 1;
+}
+
+.loginAvatar {
+  position: relative;
+  margin-bottom: 1.5rem;
+}
+
+.loginAvatarRing {
+  width: 6rem;
+  height: 6rem;
+  background: linear-gradient(to bottom right, #a78bfa, #7dd3fc, #a78bfa);
+  border-radius: 9999px;
+  padding: 3px;
+}
+
+.loginAvatarInner {
+  width: 100%;
+  height: 100%;
+  border-radius: 9999px;
+  background-color: #6b21a8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.loginAvatarCircle {
+  width: 5rem;
+  height: 5rem;
+  border-radius: 9999px;
+  background: linear-gradient(to bottom right, #7c3aed, #a78bfa);
+  opacity: 0.8;
+}
+
+.loginTitle {
+  color: var(--text-primary);
+  font-size: 1.875rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.loginSubtitle {
+  color: var(--text-primary);
+  font-size: 1.125rem;
+  margin-bottom: 0.25rem;
+}
+
+.loginTagline {
+  color: var(--accent-cyan);
+  font-size: 0.875rem;
+  margin-bottom: 2rem;
+}
+
+.loginCard {
+  width: 100%;
+  max-width: 24rem;
+  background-color: var(--bg-card);
+  backdrop-filter: blur(12px);
+  border-radius: 1rem;
+  padding: 1.5rem;
+  border: 1px solid var(--border-color);
+}
+
+.loginCardTitle {
+  color: var(--text-primary);
+  font-size: 1.125rem;
+  font-weight: 500;
+  margin-bottom: 1.5rem;
+}
+
+.loginWechatBtn {
+  width: 100%;
+  background-color: var(--accent-green);
+  color: #1a1025;
+  font-weight: 600;
+  padding: 1rem;
+  border-radius: 9999px;
+  margin-bottom: 1rem;
+  transition: background-color 0.2s;
+  font-size: 1.125rem;
+  border: none;
+  cursor: pointer;
+}
+
+.loginWechatBtn:hover {
+  background-color: #22c55e;
+}
+
+.loginInfoBox {
+  background-color: #2a2242;
+  border-radius: 0.75rem;
+  padding: 1rem;
+  margin-bottom: 1rem;
+}
+
+.loginInfoText {
+  color: var(--text-secondary);
+  font-size: 0.875rem;
+  line-height: 1.625;
+}
+
+.loginInfoIcon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.25rem;
+  height: 1.25rem;
+  background-color: #4b5563;
+  border-radius: 9999px;
+  color: #fff;
+  font-size: 0.75rem;
+  margin-left: 0.25rem;
+  cursor: pointer;
+}
+
+.loginSecurity {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  color: var(--text-muted);
+  font-size: 0.875rem;
+  margin-bottom: 0.75rem;
+}
+
+.loginTerms {
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 0.75rem;
+}
+
+.loginTermsLink {
+  color: var(--accent-purple);
+}
+
+.loginFeatureTabs {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  margin-top: 1.5rem;
+  color: var(--text-muted);
+  font-size: 0.875rem;
+}
+
+.loginFeatureCards {
+  width: 100%;
+  max-width: 24rem;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.loginFeatureCard {
+  background-color: rgba(30, 24, 50, 0.8);
+  backdrop-filter: blur(4px);
+  border-radius: 0.75rem;
+  padding: 1rem;
+  border: 1px solid var(--border-color);
+}
+
+.loginFeatureCardHeader {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.loginFeatureCardIcon {
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 9999px;
+  background-color: #2a2242;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.loginFeatureCardTitle {
+  color: var(--text-primary);
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.loginFeatureCardDesc {
+  color: var(--text-muted);
+  font-size: 0.75rem;
+  line-height: 1.625;
+}
+
+.loginFooter {
+  color: var(--accent-cyan);
+  font-size: 0.75rem;
+  margin-top: auto;
+  padding-top: 1.5rem;
+  text-align: center;
+}
+
+/* ===== 主题切换按钮 ===== */
+.themeToggle {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  z-index: 50;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 9999px;
+  background-color: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s;
+  color: #fff;
+}
+
+.themeToggle:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+/* ===== 主页 ===== */
+.homeContainer {
+  min-height: 100vh;
+  background-color: var(--bg-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.homeContent {
+  text-align: center;
+}
+
+.homeTitle {
+  color: var(--text-primary);
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.homeSubtitle {
+  color: var(--text-secondary);
+  margin-bottom: 1.5rem;
+}
+
+.homeLogoutBtn {
+  background-color: #9333ea;
+  color: #fff;
+  padding: 0.5rem 1.5rem;
+  border-radius: 9999px;
+  border: none;
+  cursor: pointer;
+}
+
+/* ===== 图标尺寸 ===== */
+.iconSm {
+  width: 1rem;
+  height: 1rem;
+}
+
+.iconMd {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+.iconLg {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.iconXl {
+  width: 3rem;
+  height: 3rem;
+}
+
+.iconPurple {
+  color: #c084fc;
+}
+
+.iconWhite {
+  color: #fff;
+}
+
+.iconRed {
+  color: #f87171;
+}
+
+/* ===== 动画 ===== */
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+@keyframes ping {
+  75%, 100% {
+    transform: scale(1.5);
+    opacity: 0;
+  }
+}
