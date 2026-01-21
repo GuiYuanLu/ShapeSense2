@@ -8,7 +8,7 @@
 "use client"
 
 import { CheckCircle } from "lucide-react"
-import styles from "@/styles/success-dialog.css"
+import styles from "@/styles/success-dialog.module.css"
 
 interface SuccessDialogProps {
   isOpen: boolean

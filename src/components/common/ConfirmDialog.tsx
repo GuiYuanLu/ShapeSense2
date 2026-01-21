@@ -8,7 +8,7 @@
 "use client"
 
 import { AlertTriangle } from "lucide-react"
-import styles from "@/styles/confirm-dialog.css"
+import styles from "@/styles/confirm-dialog.module.css"
 
 interface ConfirmDialogProps {
   isOpen: boolean

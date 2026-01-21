@@ -7,7 +7,7 @@
  */
 "use client"
 
-import styles from "@/styles/effects.css"
+import styles from "@/styles/effects.module.css"
 
 export function EffectsScreen() {
   return (

@@ -8,7 +8,7 @@
 "use client"
 
 import { Home, Sparkles, Scissors, User } from "lucide-react"
-import styles from "@/styles/bottom-nav.css"
+import styles from "@/styles/bottom-nav.module.css"
 
 interface BottomNavProps {
   activeTab: string

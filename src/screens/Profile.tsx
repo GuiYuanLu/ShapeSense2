@@ -17,7 +17,7 @@ import { User, Settings, Heart, History, LogOut } from "lucide-react"
 import { useAppStore, useUserStore } from "@/lib/stores"
 import { ConfirmDialog } from "@/components/common/ConfirmDialog"
 import { SuccessDialog } from "@/components/common/SuccessDialog"
-import styles from "@/styles/profile.css"
+import styles from "@/styles/profile.module.css"
 
 export function ProfileScreen() {
   const { setScreen } = useAppStore()

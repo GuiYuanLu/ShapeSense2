@@ -7,7 +7,7 @@
  */
 "use client"
 
-import styles from "@/styles/home.css"
+import styles from "@/styles/home.module.css"
 
 export function HomeScreen() {
   return (

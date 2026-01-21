@@ -7,7 +7,7 @@
  */
 "use client"
 
-import styles from "@/styles/salon.css"
+import styles from "@/styles/salon.module.css"
 
 export function SalonScreen() {
   return (
