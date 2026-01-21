@@ -16,13 +16,15 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0.25rem;
-  padding: 0.5rem 1rem;
+  justify-content: center;
+  gap: 0.2rem;
+  padding: 0.4rem 0.5rem;
   border: none;
   background: transparent;
   cursor: pointer;
   transition: all 0.2s;
   border-radius: 0.5rem;
+  min-width: 3rem;
 }
 
 .tabActive {
@@ -38,11 +40,45 @@
 }
 
 .icon {
-  width: 1.5rem;
-  height: 1.5rem;
+  width: 1.25rem;
+  height: 1.25rem;
 }
 
 .label {
-  font-size: 0.75rem;
+  font-size: 0.625rem;
   font-weight: 500;
+}
+
+@media (min-width: 640px) {
+  .container {
+    padding: 0.75rem 0;
+  }
+  
+  .tab {
+    gap: 0.25rem;
+    padding: 0.5rem 1rem;
+  }
+  
+  .icon {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+  
+  .label {
+    font-size: 0.75rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .container {
+    max-width: 48rem;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 1rem 1rem 0 0;
+    padding: 0.75rem 0;
+  }
+  
+  .tab {
+    padding: 0.5rem 1.5rem;
+  }
 }

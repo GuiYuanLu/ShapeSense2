@@ -92,7 +92,7 @@ export default function LoginPage() {
       <div className={styles.homeContainer}>
         <ThemeToggle />
         <div className={styles.homeContent}>
-          {activeTab === "home" && <HomeScreen />}
+          {activeTab === "home" && <HomeScreen onTabChange={setActiveTab} />}
           {activeTab === "effects" && <EffectsScreen />}
           {activeTab === "salon" && <SalonScreen />}
           {activeTab === "profile" && <ProfileScreen />}
@@ -108,13 +108,13 @@ export default function LoginPage() {
       
       {/* Background images */}
       <div className={styles.loginBgImages}>
-        <div className={styles.loginBgImage} style={{ top: 0, left: 0, width: '8rem', height: '10rem' }}>
+        <div className={`${styles.loginBgImage} ${styles.loginBgImage1}`}>
           <img src="/images/e7-99-bb-e5-bd-95-e9-a1-b5.png" alt="" className={styles.loginBgImageBlur} />
         </div>
-        <div className={styles.loginBgImage} style={{ top: '5rem', right: 0, width: '7rem', height: '9rem' }}>
+        <div className={`${styles.loginBgImage} ${styles.loginBgImage2}`}>
           <img src="/images/e7-99-bb-e5-bd-95-e9-a1-b5.png" alt="" className={styles.loginBgImageBlur} />
         </div>
-        <div className={styles.loginBgImage} style={{ top: 0, left: '33%', width: '6rem', height: '8rem', opacity: 0.2 }}>
+        <div className={`${styles.loginBgImage} ${styles.loginBgImage3}`}>
           <img src="/images/e7-99-bb-e5-bd-95-e9-a1-b5.png" alt="" className={styles.loginBgImageBlur} />
         </div>
       </div>

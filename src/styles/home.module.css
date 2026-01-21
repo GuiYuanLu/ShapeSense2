@@ -1,13 +1,1086 @@
 .container {
   min-height: 100vh;
+  background-color: var(--background);
+  color: var(--foreground);
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 5rem;
+  overflow-x: hidden;
+}
+
+/* 顶部导航 */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 1rem 0.5rem;
+  background: linear-gradient(135deg, rgba(147, 51, 234, 0.15) 0%, rgba(139, 92, 246, 0.1) 100%);
+  backdrop-filter: blur(20px);
+  position: relative;
+  z-index: 10;
+  border-bottom: 1px solid rgba(147, 51, 234, 0.2);
+  box-shadow: 0 2px 20px rgba(147, 51, 234, 0.1);
+}
+
+.header::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent 0%, rgba(147, 51, 234, 0.3) 50%, transparent 100%);
+}
+
+.headerLeft {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.hashtag {
+  color: var(--accent-purple);
+  font-weight: 700;
+  font-size: 1.125rem;
+  letter-spacing: -0.5px;
+  text-shadow: 0 1px 3px rgba(147, 51, 234, 0.3);
+}
+
+.tryOnBtn {
+  background: linear-gradient(135deg, var(--accent-purple) 0%, #8b5cf6 100%);
+  color: white;
+  border: none;
+  padding: 0.625rem 1.5rem;
+  border-radius: 9999px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 15px rgba(147, 51, 234, 0.4), 0 1px 3px rgba(147, 51, 234, 0.2);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  letter-spacing: 0.25px;
+}
+
+.tryOnBtn:hover {
+  background: linear-gradient(135deg, #8b5cf6 0%, #a78bfa 100%);
+  box-shadow: 0 6px 20px rgba(147, 51, 234, 0.5), 0 2px 6px rgba(147, 51, 234, 0.3);
+  transform: translateY(-1px);
+}
+
+.tryOnBtn:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 8px rgba(147, 51, 234, 0.3), 0 1px 2px rgba(147, 51, 234, 0.2);
+}
+
+.userAvatar {
+  width: 2.25rem;
+  height: 2.25rem;
+  background: linear-gradient(135deg, var(--accent-purple) 0%, #8b5cf6 100%);
+  border-radius: 9999px;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding-bottom: 5rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 12px rgba(147, 51, 234, 0.3);
+  border: 2px solid rgba(255, 255, 255, 0.1);
 }
 
-.title {
-  font-size: 2rem;
-  font-weight: 700;
+.userAvatar:hover {
+  transform: scale(1.1);
+}
+
+.avatarIcon {
+  width: 1rem;
+  height: 1rem;
+  color: white;
+}
+
+/* 发型选择标签 */
+.hairstyleTag {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  background-color: rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10px);
+  position: relative;
+  z-index: 10;
+}
+
+.tagText {
   color: var(--foreground);
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.tagIndicator {
+  width: 0.5rem;
+  height: 0.5rem;
+  background-color: var(--accent-purple);
+  border-radius: 9999px;
+}
+
+/* 相机区域 */
+.cameraContainer {
+  position: relative;
+  width: 100%;
+  height: 60vh;
+  background-color: #1e1b4b;
+  border-radius: 0 0 1rem 1rem;
+  overflow: hidden;
+  margin-bottom: 1rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.cameraPlaceholder {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #7c3aed, #8b5cf6, #a78bfa);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.cameraPlaceholder::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url('/images/e7-99-bb-e5-bd-95-e9-a1-b5.png');
+  background-size: cover;
+  background-position: center;
+  opacity: 0.3;
+}
+
+.cameraGuide {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  position: relative;
+  z-index: 2;
+  color: white;
+  text-align: center;
+}
+
+.cameraCircle {
+  width: 8rem;
+  height: 8rem;
+  border: 2px dashed rgba(255, 255, 255, 0.6);
+  border-radius: 9999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  animation: pulse 2s infinite;
+}
+
+.cameraCircle::before {
+  content: '';
+  position: absolute;
+  width: 10rem;
+  height: 10rem;
+  border: 2px dashed rgba(255, 255, 255, 0.3);
+  border-radius: 9999px;
+  animation: pulse 2s infinite 0.5s;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 0.7;
+  }
+}
+
+.cameraIcon {
+  width: 3rem;
+  height: 3rem;
+  color: white;
+  opacity: 0.8;
+}
+
+.guideText {
+  color: white;
+  font-size: 0.875rem;
+  opacity: 0.9;
+  max-width: 80%;
+  line-height: 1.5;
+}
+
+/* 底部控制按钮 */
+.controlButtons {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 1rem;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 0.75rem 1.5rem;
+  border-radius: 9999px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.controlBtn {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 9999px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  background-color: rgba(255, 255, 255, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.controlBtn:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+  transform: scale(1.05);
+}
+
+.controlBtn.primaryBtn {
+  background-color: var(--accent-purple);
+  border-color: var(--accent-purple);
+  transform: scale(1.1);
+}
+
+.controlBtn.primaryBtn:hover {
+  background-color: #8b5cf6;
+  transform: scale(1.15);
+}
+
+.controlIcon {
+  width: 1.25rem;
+  height: 1.25rem;
+  color: white;
+}
+
+/* 发型库 */
+.hairstyleLibrary {
+  padding: 0 1rem;
+  flex: 1;
+}
+
+.sectionHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+  padding: 0.5rem 0;
+}
+
+.sectionTitle {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--foreground);
+}
+
+.sectionAction {
+  font-size: 0.75rem;
+  color: var(--accent-purple);
+  font-weight: 600;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  background-color: rgba(147, 51, 234, 0.1);
+  border: 1px solid rgba(147, 51, 234, 0.2);
+  white-space: nowrap;
+}
+
+.sectionAction:hover {
+  background-color: rgba(147, 51, 234, 0.2);
+  border-color: rgba(147, 51, 234, 0.3);
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(147, 51, 234, 0.15);
+}
+
+.haircount {
+  background-color: var(--accent-purple);
+  color: white;
+  font-size: 0.75rem;
+  padding: 0.25rem 0.5rem;
+  border-radius: 9999px;
+  font-weight: 600;
+}
+
+/* 发型列表 */
+.hairstyleList {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+}
+
+.hairstyleItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 0.75rem;
+  padding: 1rem 0.5rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  position: relative;
+}
+
+.hairstyleItem:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.activeHairstyle {
+  border-color: var(--accent-purple);
+  background-color: rgba(167, 139, 250, 0.1);
+}
+
+.hairstyleIcon {
+  width: 3rem;
+  height: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.headOutline {
+  width: 2rem;
+  height: 2.5rem;
+  border: 2px solid var(--accent-purple);
+  border-radius: 9999px 9999px 0 0;
+  position: relative;
+}
+
+.headOutline::before {
+  content: '';
+  position: absolute;
+  top: -0.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 1rem;
+  height: 1rem;
+  border: 2px solid var(--accent-purple);
+  border-radius: 9999px;
+}
+
+.hairstyleName {
+  font-size: 0.75rem;
+  color: var(--foreground);
+  font-weight: 500;
+  text-align: center;
+  line-height: 1.2;
+}
+
+.activeIndicator {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  width: 1rem;
+  height: 1rem;
+  background-color: var(--accent-purple);
+  border-radius: 9999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.checkIcon {
+  width: 0.625rem;
+  height: 0.625rem;
+  color: white;
+}
+
+/* 发色盘 */
+.haircolorSection {
+  margin-bottom: 1.5rem;
+}
+
+.haircolorList {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 0.5rem;
+  overflow-x: auto;
+  padding-bottom: 0.5rem;
+  scrollbar-width: none;
+}
+
+.haircolorList::-webkit-scrollbar {
+  display: none;
+}
+
+.haircolorItem {
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 9999px;
+  border: 3px solid transparent;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.haircolorItem:hover {
+  transform: scale(1.1);
+}
+
+.activeHaircolor {
+  border-color: white;
+  box-shadow: 0 0 0 2px var(--accent-purple);
+  transform: scale(1.15);
+}
+
+.haircolorNames {
+  display: flex;
+  gap: 0.875rem;
+  margin-bottom: 1rem;
+  overflow-x: auto;
+  scrollbar-width: none;
+  padding-bottom: 0.5rem;
+}
+
+.haircolorNames::-webkit-scrollbar {
+  display: none;
+}
+
+.haircolorName {
+  font-size: 0.625rem;
+  color: var(--muted-foreground);
+  font-weight: 500;
+  flex-shrink: 0;
+  white-space: nowrap;
+  padding: 0.25rem 0.5rem;
+  border-radius: 9999px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  background: transparent;
+  border: none;
+}
+
+.haircolorName:hover {
+  color: var(--accent-purple);
+  background-color: rgba(147, 51, 234, 0.1);
+}
+
+.activeHaircolorName {
+  color: var(--accent-purple);
+  font-weight: 700;
+  background-color: rgba(147, 51, 234, 0.15);
+  box-shadow: 0 1px 3px rgba(147, 51, 234, 0.2);
+}
+
+/* 滑动条 */
+.sliderContainer {
+  margin: 0.5rem 0 1.5rem;
+}
+
+.slider {
+  width: 100%;
+  height: 0.5rem;
+  background: linear-gradient(to right, #9333ea, #3b82f6, #ec4899, #d1d5db, #f59e0b);
+  border-radius: 9999px;
+  position: relative;
+  cursor: pointer;
+}
+
+.sliderTrack {
+  height: 100%;
+  background: transparent;
+}
+
+.sliderThumb {
+  position: absolute;
+  top: 50%;
+  left: 20%;
+  transform: translate(-50%, -50%);
+  width: 1.25rem;
+  height: 1.25rem;
+  background-color: white;
+  border: 3px solid var(--accent-purple);
+  border-radius: 9999px;
+  cursor: grab;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.sliderThumb:active {
+  cursor: grabbing;
+  transform: translate(-50%, -50%) scale(1.1);
+}
+
+/* 功能按钮 */
+.functionButtons {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.functionBtn {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  background-color: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 0.75rem;
+  padding: 1rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-align: left;
+}
+
+.functionBtn:hover {
+  border-color: var(--accent-purple);
+  box-shadow: 0 4px 12px rgba(167, 139, 250, 0.2);
+  transform: translateY(-1px);
+}
+
+.functionIcon {
+  width: 1.5rem;
+  height: 1.5rem;
+  color: var(--accent-purple);
+  flex-shrink: 0;
+}
+
+.functionText {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.functionTitle {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--foreground);
+}
+
+.functionDesc {
+  font-size: 0.75rem;
+  color: var(--muted-foreground);
+  line-height: 1.3;
+}
+
+/* 使用提示 */
+.tipsContainer {
+  background-color: rgba(167, 139, 250, 0.1);
+  border: 1px solid var(--accent-purple);
+  border-radius: 0.75rem;
+  padding: 1rem;
+  margin: 0 0.5rem;
+}
+
+.tipsHeader {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.infoIcon {
+  width: 1rem;
+  height: 1rem;
+  color: var(--accent-purple);
+}
+
+.tipsTitle {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--accent-purple);
+}
+
+.tipsList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.tipItem {
+  font-size: 0.75rem;
+  color: var(--foreground);
+  line-height: 1.4;
+  position: relative;
+  padding-left: 0.5rem;
+}
+
+/* 专业模式模态框 */
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(10px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  animation: fadeIn 0.3s ease;
+}
+
+.modalContent {
+  background-color: var(--card);
+  border-radius: 1.5rem;
+  padding: 1.5rem;
+  width: 90%;
+  max-width: 32rem;
+  max-height: 80vh;
+  overflow-y: auto;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(147, 51, 234, 0.2);
+  animation: slideUp 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.modalHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.modalTitle {
+  color: var(--foreground);
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin: 0;
+  letter-spacing: -0.5px;
+}
+
+.closeBtn {
+  background: transparent;
+  border: none;
+  color: var(--muted-foreground);
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  width: 2rem;
+  height: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9999px;
+}
+
+.closeBtn:hover {
+  color: var(--foreground);
+  background-color: var(--muted);
+  transform: scale(1.1);
+}
+
+/* 颜色模式选择 */
+.colorModeTabs {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+  padding: 0.5rem;
+  background-color: var(--muted);
+  border-radius: 1rem;
+}
+
+.modeTab {
+  flex: 1;
+  padding: 0.75rem 1rem;
+  border: none;
+  background: transparent;
+  color: var(--muted-foreground);
+  font-size: 0.875rem;
+  font-weight: 600;
+  border-radius: 0.75rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.modeTab:hover {
+  color: var(--accent-purple);
+  background-color: rgba(147, 51, 234, 0.1);
+}
+
+.activeMode {
+  background: linear-gradient(135deg, var(--accent-purple) 0%, #8b5cf6 100%);
+  color: white;
+  box-shadow: 0 2px 10px rgba(147, 51, 234, 0.3);
+}
+
+/* 颜色输入区域 */
+.colorInputSection {
+  margin-bottom: 2rem;
+}
+
+.sectionSubtitle {
+  color: var(--foreground);
+  font-size: 1rem;
+  font-weight: 600;
+  margin: 0 0 1rem 0;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.rgbInputs {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(60px, 1fr));
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.colorInputGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.inputLabel {
+  color: var(--foreground);
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.colorInput {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid var(--border);
+  border-radius: 0.75rem;
+  background-color: var(--input);
+  color: var(--foreground);
+  font-size: 1rem;
+  font-weight: 600;
+  text-align: center;
+  transition: all 0.2s ease;
+}
+
+.colorInput:focus {
+  outline: none;
+  border-color: var(--accent-purple);
+  box-shadow: 0 0 0 2px rgba(147, 51, 234, 0.2);
+}
+
+/* 颜色预览 */
+.colorPreviewSection {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.colorPreview {
+  width: 6rem;
+  height: 6rem;
+  border-radius: 1rem;
+  border: 3px solid var(--border);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  transition: all 0.2s ease;
+}
+
+.colorValue {
+  color: var(--accent-purple);
+  font-size: 0.875rem;
+  font-weight: 600;
+  background-color: rgba(147, 51, 234, 0.1);
+  padding: 0.5rem 1rem;
+  border-radius: 9999px;
+  letter-spacing: 0.5px;
+}
+
+/* 三原色调配 */
+.primaryMixSection {
+  margin-bottom: 2rem;
+}
+
+.primaryMixContent {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.mixDescription {
+  color: var(--muted-foreground);
+  font-size: 0.875rem;
+  margin: 0;
+  line-height: 1.5;
+}
+
+.primarySliders {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.sliderGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.sliderLabel {
+  color: var(--foreground);
+  font-size: 0.875rem;
+  font-weight: 600;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.primarySlider {
+  width: 100%;
+  height: 0.5rem;
+  border-radius: 9999px;
+  background: linear-gradient(90deg, #ff0000 0%, #00ff00 50%, #0000ff 100%);
+  outline: none;
+  -webkit-appearance: none;
+  cursor: pointer;
+}
+
+.primarySlider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 1.25rem;
+  height: 1.25rem;
+  border-radius: 9999px;
+  background-color: white;
+  border: 3px solid var(--accent-purple);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  cursor: grab;
+  transition: all 0.2s ease;
+}
+
+.primarySlider::-webkit-slider-thumb:active {
+  cursor: grabbing;
+  transform: scale(1.1);
+  box-shadow: 0 4px 12px rgba(147, 51, 234, 0.4);
+}
+
+.primarySlider::-moz-range-thumb {
+  width: 1.25rem;
+  height: 1.25rem;
+  border-radius: 9999px;
+  background-color: white;
+  border: 3px solid var(--accent-purple);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  cursor: grab;
+  transition: all 0.2s ease;
+}
+
+.primarySlider::-moz-range-thumb:active {
+  cursor: grabbing;
+  transform: scale(1.1);
+  box-shadow: 0 4px 12px rgba(147, 51, 234, 0.4);
+}
+
+/* 混合颜色预览 */
+.mixedColorSection {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  background-color: var(--muted);
+  border-radius: 1rem;
+  margin-top: 1rem;
+}
+
+.mixedTitle {
+  color: var(--foreground);
+  font-size: 0.875rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+.mixedColorPreview {
+  width: 5rem;
+  height: 5rem;
+  border-radius: 9999px;
+  border: 3px solid white;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  transition: all 0.2s ease;
+  position: relative;
+}
+
+.mixedColorPreview::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: repeating-conic-gradient(#e5e7eb 0% 25%, transparent 0% 50%) 50% / 0.5rem 0.5rem;
+  border-radius: 9999px;
+  z-index: -1;
+}
+
+.mixedColorValue {
+  color: var(--accent-purple);
+  font-size: 0.875rem;
+  font-weight: 600;
+  font-family: 'Courier New', monospace;
+  background-color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 9999px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* 模态框底部 */
+.modalFooter {
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border);
+  display: flex;
+  justify-content: center;
+}
+
+.seeLaterBtn {
+  background: linear-gradient(135deg, var(--accent-purple) 0%, #8b5cf6 100%);
+  color: white;
+  border: none;
+  padding: 1rem 2rem;
+  border-radius: 1rem;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 15px rgba(147, 51, 234, 0.4);
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  width: 100%;
+  max-width: 20rem;
+}
+
+.seeLaterBtn:hover {
+  background: linear-gradient(135deg, #8b5cf6 0%, #a78bfa 100%);
+  box-shadow: 0 6px 20px rgba(147, 51, 234, 0.5);
+  transform: translateY(-2px);
+}
+
+.seeLaterBtn:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 8px rgba(147, 51, 234, 0.3);
+}
+
+/* 响应式设计 */
+@media (max-width: 640px) {
+  .modalContent {
+    width: 95%;
+    padding: 1rem;
+    margin: 1rem;
+  }
+  
+  .rgbInputs {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.75rem;
+  }
+  
+  .colorPreview {
+    width: 5rem;
+    height: 5rem;
+  }
+  
+  .mixedColorPreview {
+    width: 4rem;
+    height: 4rem;
+  }
+}
+
+/* 滚动条样式 */
+.modalContent::-webkit-scrollbar {
+  width: 0.5rem;
+}
+
+.modalContent::-webkit-scrollbar-track {
+  background: var(--muted);
+  border-radius: 9999px;
+}
+
+.modalContent::-webkit-scrollbar-thumb {
+  background: var(--accent-purple);
+  border-radius: 9999px;
+}
+
+.modalContent::-webkit-scrollbar-thumb:hover {
+  background: #8b5cf6;
+}
+
+/* 响应式设计 */
+@media (min-width: 640px) {
+  .container {
+    max-width: 48rem;
+    margin: 0 auto;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  }
+  
+  .header {
+    padding: 1.5rem 1.5rem 0.75rem;
+  }
+  
+  .cameraContainer {
+    height: 70vh;
+    border-radius: 0 0 1.5rem 1.5rem;
+  }
+  
+  .hairstyleLibrary {
+    padding: 0 1.5rem;
+  }
+  
+  .controlButtons {
+    gap: 1.5rem;
+  }
+  
+  .hairstyleList {
+    gap: 1rem;
+  }
+  
+  .functionButtons {
+    gap: 1.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .container {
+    max-width: 56rem;
+  }
+  
+  .cameraContainer {
+    height: 75vh;
+  }
+  
+  .controlButtons {
+    bottom: 3rem;
+  }
+  
+  .hairstyleList {
+    grid-template-columns: repeat(5, 1fr);
+  }
 }
