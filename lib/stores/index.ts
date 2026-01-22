@@ -9,8 +9,10 @@
 export { useUserStore } from './userStore'
 export { useAppStore } from './appStore'
 export { useHairstyleStore } from './hairstyleStore'
+export { useDataStore } from './dataStore'
 
 // 导出类型
 export type { UserInfo } from './userStore'
 export type { ScreenType } from './appStore'
 export type { Hairstyle, AnalysisResult } from './hairstyleStore'
+export type { Hairstyle as SimpleHairstyle, Haircolor } from './dataStore'
