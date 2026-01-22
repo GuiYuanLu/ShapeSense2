@@ -1,0 +1,121 @@
+/* 模态框遮罩层 */
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(10px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* 模态框内容 */
+.modalContent {
+  background-color: var(--card);
+  border-radius: 1.5rem;
+  padding: 1.5rem;
+  width: 90%;
+  max-height: 80vh;
+  overflow-y: auto;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(147, 51, 234, 0.2);
+  animation: slideUp 0.3s ease;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* 模态框头部 */
+.modalHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.modalTitle {
+  color: var(--foreground);
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin: 0;
+  letter-spacing: -0.5px;
+}
+
+.closeBtn {
+  background: transparent;
+  border: none;
+  color: var(--muted-foreground);
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  width: 2rem;
+  height: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9999px;
+}
+
+.closeBtn:hover {
+  color: var(--foreground);
+  background-color: var(--muted);
+  transform: scale(1.1);
+}
+
+/* 模态框主体 */
+.modalBody {
+  display: flex;
+  flex-direction: column;
+}
+
+/* 滚动条样式 */
+.modalContent::-webkit-scrollbar {
+  width: 0.5rem;
+}
+
+.modalContent::-webkit-scrollbar-track {
+  background: var(--muted);
+  border-radius: 9999px;
+}
+
+.modalContent::-webkit-scrollbar-thumb {
+  background: var(--accent-purple);
+  border-radius: 9999px;
+}
+
+.modalContent::-webkit-scrollbar-thumb:hover {
+  background: #8b5cf6;
+}
+
+/* 响应式设计 */
+@media (max-width: 640px) {
+  .modalContent {
+    width: 95%;
+    padding: 1rem;
+    margin: 1rem;
+  }
+}

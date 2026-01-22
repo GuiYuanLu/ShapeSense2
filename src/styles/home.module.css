@@ -1291,6 +1291,124 @@
   margin-bottom: 1rem;
 }
 
+/* 等于号容器 */
+.equalsSignContainer {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 0 0.5rem;
+}
+
+/* 有质感的等于号 */
+.equalsSign {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--accent-purple);
+  background: linear-gradient(135deg, var(--accent-purple) 0%, #8b5cf6 50%, #a78bfa 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-shadow: 0 2px 8px rgba(147, 51, 234, 0.3);
+  position: relative;
+}
+
+.equalsSign::before {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  background: linear-gradient(135deg, rgba(147, 51, 234, 0.2) 0%, rgba(139, 92, 246, 0.2) 100%);
+  border-radius: 9999px;
+  z-index: -1;
+  filter: blur(8px);
+}
+
+/* 调色盘和结果显示区域 */
+.colorResultSection {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(245, 243, 255, 0.95) 100%);
+  border-radius: 1rem;
+  border: 1px solid rgba(147, 51, 234, 0.15);
+  box-shadow: 0 4px 16px rgba(147, 51, 234, 0.1);
+  min-width: 6rem;
+}
+
+/* 颜色标签 */
+.colorLabel {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--accent-purple);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  background: linear-gradient(135deg, rgba(147, 51, 234, 0.1) 0%, rgba(139, 92, 246, 0.1) 100%);
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  border: 1px solid rgba(147, 51, 234, 0.2);
+}
+
+/* 小屏设备响应式布局 - RGBA成一列，运算结果在右边 */
+@media (max-width: 430px) {
+  .rgbInputsWrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+  
+  .rgbInputs {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+  
+  .colorInputGroup {
+    width: 100%;
+  }
+  
+  .colorInput {
+    width: 100%;
+  }
+  
+  .equalsSignContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem 0.25rem;
+  }
+  
+  .equalsSign {
+    font-size: 1.5rem;
+  }
+  
+  .colorResultSection {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(245, 243, 255, 0.95) 100%);
+    border-radius: 1rem;
+    border: 1px solid rgba(147, 51, 234, 0.15);
+    box-shadow: 0 4px 16px rgba(147, 51, 234, 0.1);
+    min-width: 5rem;
+    flex-shrink: 0;
+  }
+  
+  .colorPreview {
+    width: 3.5rem !important;
+    height: 3.5rem !important;
+  }
+  
+  .colorValue {
+    font-size: 0.75rem !important;
+    padding: 0.25rem 0.5rem !important;
+  }
+}
+
 /* RGB等号和色值显示 */
 .rgbEqualsSection {
   display: flex;

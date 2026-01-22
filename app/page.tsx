@@ -41,12 +41,16 @@ export default function LoginPage() {
   }
 
   const handleLoginComplete = () => {
+    const now = new Date().toISOString()
     login(
       {
         id: "user_" + Date.now(),
         nickname: "型识用户",
+        username: "user_" + Date.now(),
         avatar: "",
-        createdAt: new Date().toISOString(),
+        createdAt: now,
+        updatedAt: now,
+        lastLoginAt: now,
       },
       "mock_token_" + Date.now()
     )
